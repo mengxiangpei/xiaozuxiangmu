@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jk.dao.SysUserSysroleMapper" >
+  <resultMap id="BaseResultMap" type="com.jk.pojo.SysUserSysroleKey" >
+    <id column="SYSUSER_ID" property="sysuserId" jdbcType="VARCHAR" />
+    <id column="SYSROLE_ID" property="sysroleId" jdbcType="VARCHAR" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="com.jk.pojo.SysUserSysroleKey" >
+    delete from t_sysuser_sysrole_info
+    where SYSUSER_ID = #{sysuserId,jdbcType=VARCHAR}
+      and SYSROLE_ID = #{sysroleId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.jk.pojo.SysUserSysroleKey" >
+    insert into t_sysuser_sysrole_info (SYSUSER_ID, SYSROLE_ID)
+    values (#{sysuserId,jdbcType=VARCHAR}, #{sysroleId,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.jk.pojo.SysUserSysroleKey" >
+    insert into t_sysuser_sysrole_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="sysuserId != null" >
+        SYSUSER_ID,
+      </if>
+      <if test="sysroleId != null" >
+        SYSROLE_ID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="sysuserId != null" >
+        #{sysuserId,jdbcType=VARCHAR},
+      </if>
+      <if test="sysroleId != null" >
+        #{sysroleId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

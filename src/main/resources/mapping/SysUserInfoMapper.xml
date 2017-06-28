@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jk.dao.SysUserInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.jk.pojo.SysUserInfo" >
+    <id column="sysuser_id" property="sysuserId" jdbcType="VARCHAR" />
+    <result column="sysuser_name" property="sysuserName" jdbcType="VARCHAR" />
+    <result column="sysuser_loginname" property="sysuserLoginname" jdbcType="VARCHAR" />
+    <result column="sysuser_pwd" property="sysuserPwd" jdbcType="VARCHAR" />
+    <result column="sysuser_sex" property="sysuserSex" jdbcType="VARCHAR" />
+    <result column="sysuser_age" property="sysuserAge" jdbcType="VARCHAR" />
+    <result column="sysuser_photo" property="sysuserPhoto" jdbcType="VARCHAR" />
+    <result column="sysuser_updatedatetime" property="sysuserUpdatedatetime" jdbcType="DATE" />
+    <result column="sysuser_createdatetime" property="sysuserCreatedatetime" jdbcType="DATE" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    sysuser_id, sysuser_name, sysuser_loginname, sysuser_pwd, sysuser_sex, sysuser_age, 
+    sysuser_photo, sysuser_updatedatetime, sysuser_createdatetime
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_sysuser_info
+    where sysuser_id = #{sysuserId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from t_sysuser_info
+    where sysuser_id = #{sysuserId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.jk.pojo.SysUserInfo" >
+    insert into t_sysuser_info (sysuser_id, sysuser_name, sysuser_loginname, 
+      sysuser_pwd, sysuser_sex, sysuser_age, 
+      sysuser_photo, sysuser_updatedatetime, sysuser_createdatetime
+      )
+    values (#{sysuserId,jdbcType=VARCHAR}, #{sysuserName,jdbcType=VARCHAR}, #{sysuserLoginname,jdbcType=VARCHAR}, 
+      #{sysuserPwd,jdbcType=VARCHAR}, #{sysuserSex,jdbcType=VARCHAR}, #{sysuserAge,jdbcType=VARCHAR}, 
+      #{sysuserPhoto,jdbcType=VARCHAR}, #{sysuserUpdatedatetime,jdbcType=DATE}, #{sysuserCreatedatetime,jdbcType=DATE}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.jk.pojo.SysUserInfo" >
+    insert into t_sysuser_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="sysuserId != null" >
+        sysuser_id,
+      </if>
+      <if test="sysuserName != null" >
+        sysuser_name,
+      </if>
+      <if test="sysuserLoginname != null" >
+        sysuser_loginname,
+      </if>
+      <if test="sysuserPwd != null" >
+        sysuser_pwd,
+      </if>
+      <if test="sysuserSex != null" >
+        sysuser_sex,
+      </if>
+      <if test="sysuserAge != null" >
+        sysuser_age,
+      </if>
+      <if test="sysuserPhoto != null" >
+        sysuser_photo,
+      </if>
+      <if test="sysuserUpdatedatetime != null" >
+        sysuser_updatedatetime,
+      </if>
+      <if test="sysuserCreatedatetime != null" >
+        sysuser_createdatetime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="sysuserId != null" >
+        #{sysuserId,jdbcType=VARCHAR},
+      </if>
+      <if test="sysuserName != null" >
+        #{sysuserName,jdbcType=VARCHAR},
+      </if>
+      <if test="sysuserLoginname != null" >
+        #{sysuserLoginname,jdbcType=VARCHAR},
+      </if>
+      <if test="sysuserPwd != null" >
+        #{sysuserPwd,jdbcType=VARCHAR},
+      </if>
+      <if test="sysuserSex != null" >
+        #{sysuserSex,jdbcType=VARCHAR},
+      </if>
+      <if test="sysuserAge != null" >
+        #{sysuserAge,jdbcType=VARCHAR},
+      </if>
+      <if test="sysuserPhoto != null" >
+        #{sysuserPhoto,jdbcType=VARCHAR},
+      </if>
+      <if test="sysuserUpdatedatetime != null" >
+        #{sysuserUpdatedatetime,jdbcType=DATE},
+      </if>
+      <if test="sysuserCreatedatetime != null" >
+        #{sysuserCreatedatetime,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jk.pojo.SysUserInfo" >
+    update t_sysuser_info
+    <set >
+      <if test="sysuserName != null" >
+        sysuser_name = #{sysuserName,jdbcType=VARCHAR},
+      </if>
+      <if test="sysuserLoginname != null" >
+        sysuser_loginname = #{sysuserLoginname,jdbcType=VARCHAR},
+      </if>
+      <if test="sysuserPwd != null" >
+        sysuser_pwd = #{sysuserPwd,jdbcType=VARCHAR},
+      </if>
+      <if test="sysuserSex != null" >
+        sysuser_sex = #{sysuserSex,jdbcType=VARCHAR},
+      </if>
+      <if test="sysuserAge != null" >
+        sysuser_age = #{sysuserAge,jdbcType=VARCHAR},
+      </if>
+      <if test="sysuserPhoto != null" >
+        sysuser_photo = #{sysuserPhoto,jdbcType=VARCHAR},
+      </if>
+      <if test="sysuserUpdatedatetime != null" >
+        sysuser_updatedatetime = #{sysuserUpdatedatetime,jdbcType=DATE},
+      </if>
+      <if test="sysuserCreatedatetime != null" >
+        sysuser_createdatetime = #{sysuserCreatedatetime,jdbcType=DATE},
+      </if>
+    </set>
+    where sysuser_id = #{sysuserId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jk.pojo.SysUserInfo" >
+    update t_sysuser_info
+    set sysuser_name = #{sysuserName,jdbcType=VARCHAR},
+      sysuser_loginname = #{sysuserLoginname,jdbcType=VARCHAR},
+      sysuser_pwd = #{sysuserPwd,jdbcType=VARCHAR},
+      sysuser_sex = #{sysuserSex,jdbcType=VARCHAR},
+      sysuser_age = #{sysuserAge,jdbcType=VARCHAR},
+      sysuser_photo = #{sysuserPhoto,jdbcType=VARCHAR},
+      sysuser_updatedatetime = #{sysuserUpdatedatetime,jdbcType=DATE},
+      sysuser_createdatetime = #{sysuserCreatedatetime,jdbcType=DATE}
+    where sysuser_id = #{sysuserId,jdbcType=VARCHAR}
+  </update>
+</mapper>

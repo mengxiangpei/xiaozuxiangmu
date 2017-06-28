@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jk.dao.SysresourceMapper" >
+  <resultMap id="BaseResultMap" type="com.jk.pojo.Sysresource" >
+    <id column="ID" property="id" jdbcType="VARCHAR" />
+    <result column="CREATEDATETIME" property="createdatetime" jdbcType="TIMESTAMP" />
+    <result column="DESCRIPTION" property="description" jdbcType="VARCHAR" />
+    <result column="ICONCLS" property="iconcls" jdbcType="VARCHAR" />
+    <result column="NAME" property="name" jdbcType="VARCHAR" />
+    <result column="SEQ" property="seq" jdbcType="INTEGER" />
+    <result column="UPDATEDATETIME" property="updatedatetime" jdbcType="TIMESTAMP" />
+    <result column="URL" property="url" jdbcType="VARCHAR" />
+    <result column="pid" property="pid" jdbcType="VARCHAR" />
+    <result column="resourcetypeId" property="resourcetypeid" jdbcType="VARCHAR" />
+    <result column="leafNode" property="leafnode" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, CREATEDATETIME, DESCRIPTION, ICONCLS, NAME, SEQ, UPDATEDATETIME, URL, pid, resourcetypeId, 
+    leafNode
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_sysresource_info
+    where ID = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from t_sysresource_info
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.jk.pojo.Sysresource" >
+    insert into t_sysresource_info (ID, CREATEDATETIME, DESCRIPTION, 
+      ICONCLS, NAME, SEQ, 
+      UPDATEDATETIME, URL, pid, 
+      resourcetypeId, leafNode)
+    values (#{id,jdbcType=VARCHAR}, #{createdatetime,jdbcType=TIMESTAMP}, #{description,jdbcType=VARCHAR}, 
+      #{iconcls,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{seq,jdbcType=INTEGER}, 
+      #{updatedatetime,jdbcType=TIMESTAMP}, #{url,jdbcType=VARCHAR}, #{pid,jdbcType=VARCHAR}, 
+      #{resourcetypeid,jdbcType=VARCHAR}, #{leafnode,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.jk.pojo.Sysresource" >
+    insert into t_sysresource_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="createdatetime != null" >
+        CREATEDATETIME,
+      </if>
+      <if test="description != null" >
+        DESCRIPTION,
+      </if>
+      <if test="iconcls != null" >
+        ICONCLS,
+      </if>
+      <if test="name != null" >
+        NAME,
+      </if>
+      <if test="seq != null" >
+        SEQ,
+      </if>
+      <if test="updatedatetime != null" >
+        UPDATEDATETIME,
+      </if>
+      <if test="url != null" >
+        URL,
+      </if>
+      <if test="pid != null" >
+        pid,
+      </if>
+      <if test="resourcetypeid != null" >
+        resourcetypeId,
+      </if>
+      <if test="leafnode != null" >
+        leafNode,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="createdatetime != null" >
+        #{createdatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="iconcls != null" >
+        #{iconcls,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="seq != null" >
+        #{seq,jdbcType=INTEGER},
+      </if>
+      <if test="updatedatetime != null" >
+        #{updatedatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="url != null" >
+        #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="pid != null" >
+        #{pid,jdbcType=VARCHAR},
+      </if>
+      <if test="resourcetypeid != null" >
+        #{resourcetypeid,jdbcType=VARCHAR},
+      </if>
+      <if test="leafnode != null" >
+        #{leafnode,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jk.pojo.Sysresource" >
+    update t_sysresource_info
+    <set >
+      <if test="createdatetime != null" >
+        CREATEDATETIME = #{createdatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="description != null" >
+        DESCRIPTION = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="iconcls != null" >
+        ICONCLS = #{iconcls,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        NAME = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="seq != null" >
+        SEQ = #{seq,jdbcType=INTEGER},
+      </if>
+      <if test="updatedatetime != null" >
+        UPDATEDATETIME = #{updatedatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="url != null" >
+        URL = #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="pid != null" >
+        pid = #{pid,jdbcType=VARCHAR},
+      </if>
+      <if test="resourcetypeid != null" >
+        resourcetypeId = #{resourcetypeid,jdbcType=VARCHAR},
+      </if>
+      <if test="leafnode != null" >
+        leafNode = #{leafnode,jdbcType=INTEGER},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jk.pojo.Sysresource" >
+    update t_sysresource_info
+    set CREATEDATETIME = #{createdatetime,jdbcType=TIMESTAMP},
+      DESCRIPTION = #{description,jdbcType=VARCHAR},
+      ICONCLS = #{iconcls,jdbcType=VARCHAR},
+      NAME = #{name,jdbcType=VARCHAR},
+      SEQ = #{seq,jdbcType=INTEGER},
+      UPDATEDATETIME = #{updatedatetime,jdbcType=TIMESTAMP},
+      URL = #{url,jdbcType=VARCHAR},
+      pid = #{pid,jdbcType=VARCHAR},
+      resourcetypeId = #{resourcetypeid,jdbcType=VARCHAR},
+      leafNode = #{leafnode,jdbcType=INTEGER}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>
