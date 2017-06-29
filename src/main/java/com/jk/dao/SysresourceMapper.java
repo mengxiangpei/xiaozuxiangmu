@@ -4,6 +4,8 @@ import com.jk.pojo.SysResource;
 
 import java.util.List;
 
+import java.util.List;
+
 public interface SysresourceMapper {
     int deleteByPrimaryKey(String id);
 
@@ -17,6 +19,13 @@ public interface SysresourceMapper {
 
     int updateByPrimaryKey(SysResource record);
 
+<<<<<<< HEAD
     ///左侧的树
     List<SysResource> selectMainMenu(String userId);
+=======
+    int updateByPrimaryKey(Sysresource record);
+
+
+    List<Sysresource> selectResourceTree();
+>>>>>>> db0e8d3b1823e3a6e9a39745ad16cad78118b1a7
 }

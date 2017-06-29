@@ -25,6 +25,7 @@
   </sql>
 
 
+
   <!-- 根据用户id查询拥有的 左侧菜单 tree  resourcetypeId为0 -->
   <select id="selectMainMenu" resultMap="BaseResultMap"  parameterType="java.lang.String">
 
@@ -45,6 +46,20 @@
 
 
 
+=======
+  <!-- 查询菜单url资源 tree -->
+  <select id="selectResourceTree" resultMap="BaseResultMap"  >
+    select  <include refid="Base_Column_List"/>
+    from t_sysresource_info
+    <trim prefix="where" prefixOverrides="and">
+      <if test="resourcetypeId!=null and resourcetypeId!=''">
+        resourcetypeId = #resourcetypeId#;
+      </if>
+    </trim>
+  </select>
+
+
+>>>>>>> db0e8d3b1823e3a6e9a39745ad16cad78118b1a7
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
     <include refid="Base_Column_List" />

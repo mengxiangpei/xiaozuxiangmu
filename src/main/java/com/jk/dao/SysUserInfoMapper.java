@@ -14,4 +14,10 @@ public interface SysUserInfoMapper {
     int updateByPrimaryKeySelective(SysUserInfo record);
 
     int updateByPrimaryKey(SysUserInfo record);
+
+    SysUserInfo checkSysUserInfo(SysUserInfo user);
+
+    void saveSysUser(SysUserInfo user);
+
+    SysUserInfo checkSysUser(SysUserInfo user);
 }
