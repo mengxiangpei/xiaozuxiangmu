@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
         <%@ include file="/common/include.jsp"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -37,7 +36,7 @@
 function checkLoginName(value){
 	var flag = null;
 	$.ajax({
-		url:sys.contextPath+'/checkSysUser.do',
+		url:sys.contextPath+'/sys/checkSysUser.do',
 		type:'post',
 		//同步
 		async:false,
@@ -96,7 +95,7 @@ $(function(){
 
 	        	console.info(value);//info() log() error()
 	        	$.ajax({
-	        		url:sys.contextPath+'/checkSysUser.do',
+	        		url:sys.contextPath+'/sys/checkSysUser.do',
 	        		type:'post',
 	        		//同步
 	        		async:false,
@@ -155,9 +154,11 @@ $(function(){
 //注册用户
 function registerSysUser(){
 	var flag=$('form').form('validate')
+    alert($('form').form('validate'))
 	if(flag){
+	    alert($("#registerForm").serialize())
 		$.ajax({
-			url:'<%=request.getContextPath()%>/registerSysUser.do',
+			url:'<%=request.getContextPath()%>/sys/registerSysUser.do',
 			type:'post',
 			data:$("#registerForm").serialize(),
 			dataType:'json',
