@@ -51,7 +51,7 @@
     delete from t_sysuser_info
     where sysuser_id = #{sysuserId,jdbcType=VARCHAR}
   </delete>
-  <insert id="insert" parameterType="com.jk.pojo.SysUserInfo" >
+  <insert id="saveSysUser" parameterType="com.jk.pojo.SysUserInfo" >
     insert into t_sysuser_info (sysuser_id, sysuser_name, sysuser_loginname, 
       sysuser_pwd, sysuser_sex, sysuser_age, 
       sysuser_photo, sysuser_updatedatetime, sysuser_createdatetime

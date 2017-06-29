@@ -35,7 +35,7 @@ $(function(){
    		width: 400,    
 	    height: 200,     
 	    //不能关闭窗口
-	//    closed: true,    
+	   //  closed: true,
 	    cache: false,    
 	    //模态窗口
 	    modal: true,
