@@ -1,31 +1,26 @@
 package com.jk.dao;
 
-import com.jk.pojo.SysResource;
-
-import java.util.List;
+import com.jk.pojo.Sysresource;
 
 import java.util.List;
 
 public interface SysresourceMapper {
     int deleteByPrimaryKey(String id);
 
-    int insert(SysResource record);
+    int insert(Sysresource record);
 
-    int insertSelective(SysResource record);
+    int insertSelective(Sysresource record);
 
-    SysResource selectByPrimaryKey(String id);
+    Sysresource selectByPrimaryKey(String id);
 
-    int updateByPrimaryKeySelective(SysResource record);
+    int updateByPrimaryKeySelective(Sysresource record);
 
-    int updateByPrimaryKey(SysResource record);
-
-<<<<<<< HEAD
-    ///左侧的树
-    List<SysResource> selectMainMenu(String userId);
-=======
     int updateByPrimaryKey(Sysresource record);
+
+    ///左侧的树
+    List<Sysresource> selectMainMenu(String userId);
+
 
 
     List<Sysresource> selectResourceTree();
->>>>>>> db0e8d3b1823e3a6e9a39745ad16cad78118b1a7
 }

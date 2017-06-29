@@ -14,8 +14,7 @@
     user_id, user_name, user_pwd, user_tel, user_email, user_time
   </sql>
 
-<<<<<<< HEAD
-=======
+
   <!--查询list-->
   <select id="selectUserList" resultMap="BaseResultMap" parameterType="java.lang.String" >
     SELECT
@@ -23,7 +22,7 @@
     FROM t_user_info
   </select>
 
->>>>>>> db0e8d3b1823e3a6e9a39745ad16cad78118b1a7
+
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
@@ -38,16 +37,20 @@
     where user_id = #{userId,jdbcType=INTEGER}
   </delete>
 
-<<<<<<< HEAD
-  <insert id="insertUserInfo" parameterType="com.jk.pojo.UserInfo" >
-=======
 
-
+  <insert id="insertUserInfo" parameterType="com.jk.pojo.UserInfo">
+     insert into t_user_info (user_id, user_name, user_pwd,
+      user_tel, user_email, user_time
+      )
+    values (#{userId,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR}, #{userPwd,jdbcType=VARCHAR},
+      #{userTel,jdbcType=VARCHAR}, #{userEmail,jdbcType=VARCHAR}, #{userTime,jdbcType=DATE}
+      )
+  </insert>
 
 
 
   <insert id="insert" parameterType="com.jk.pojo.UserInfo" >
->>>>>>> db0e8d3b1823e3a6e9a39745ad16cad78118b1a7
+
     insert into t_user_info (user_id, user_name, user_pwd, 
       user_tel, user_email, user_time
       )

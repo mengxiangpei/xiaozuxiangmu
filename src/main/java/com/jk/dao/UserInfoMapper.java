@@ -17,14 +17,11 @@ public interface UserInfoMapper {
     int updateByPrimaryKeySelective(UserInfo record);
 
     int updateByPrimaryKey(UserInfo record);
-<<<<<<< HEAD
 
-
+    //新增
     int  insertUserInfo(UserInfo userInfo);
-=======
     //角色查询
     List selectUserList();
 
 
->>>>>>> db0e8d3b1823e3a6e9a39745ad16cad78118b1a7
 }

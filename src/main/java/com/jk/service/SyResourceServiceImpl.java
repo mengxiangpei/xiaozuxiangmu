@@ -2,7 +2,7 @@ package com.jk.service;
 
 import com.jk.dao.SysresourceMapper;
 import com.jk.dao.UserInfoMapper;
-import com.jk.pojo.SysResource;
+import com.jk.pojo.Sysresource;
 import com.jk.pojo.Tree;
 import com.jk.pojo.UserInfo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,12 +24,12 @@ public class SyResourceServiceImpl implements SyResourceService {
 
     @Override
     public List<Tree> selectMainMenu(String userId) {
-        List<SysResource> resourceList =  sysresourceMapper.selectMainMenu(userId);
-        resourceList = new ArrayList<SysResource>(new HashSet<SysResource>(resourceList));
-        List<SysResource>   list = removeDuplicate(resourceList);
-        Collections.sort(resourceList, new Comparator<SysResource>() {
+        List<Sysresource> resourceList =  sysresourceMapper.selectMainMenu(userId);
+        resourceList = new ArrayList<Sysresource>(new HashSet<Sysresource>(resourceList));
+        List<Sysresource>   list = removeDuplicate(resourceList);
+        Collections.sort(resourceList, new Comparator<Sysresource>() {
             @Override
-            public int compare(SysResource o1, SysResource o2) {
+            public int compare(Sysresource o1, Sysresource o2) {
                 if (o1.getSeq() == null) {
                     o1.setSeq(1000);
                 }
@@ -44,7 +44,7 @@ public class SyResourceServiceImpl implements SyResourceService {
         Tree zjtree = null;
         List<Tree> childTree = null;
         HashMap<String, String> url = null;
-        for (SysResource r : resourceList) {
+        for (Sysresource r : resourceList) {
             fjtree = new Tree();
             if (null == r.getPid() ) {
                 childTree = new ArrayList<>();
@@ -52,7 +52,7 @@ public class SyResourceServiceImpl implements SyResourceService {
                 fjtree.setPid(r.getPid());
                 fjtree.setText(r.getName());
                 fjtree.setState("closed");
-                for (SysResource zir : resourceList) {
+                for (Sysresource zir : resourceList) {
                     if (null != zir.getPid() && zir.getPid().equals(r.getId())) {
                         zjtree = new Tree();
                         zjtree.setId(zir.getIconCls());
@@ -80,18 +80,18 @@ public class SyResourceServiceImpl implements SyResourceService {
         return userInfoMapper.insertUserInfo(userInfo);
     }
 
-    public static List<SysResource> removeDuplicate(List<SysResource> list){
+    public static List<Sysresource> removeDuplicate(List<Sysresource> list){
         //实例化 hashSet
-        Set<SysResource> set = new HashSet<SysResource>();
+        Set<Sysresource> set = new HashSet<Sysresource>();
         //实例化 ArrayList
-        List<SysResource> newList = new ArrayList<SysResource>();
+        List<Sysresource> newList = new ArrayList<Sysresource>();
       /*  Iterator<SysResource> it =  list.iterator();
         while( it.hasNext()){
         	SysResource element = it.next();
         }*/
         //  add() 返回boolean类型  true代表向集合添加元素成功   false代表向集合添加元素失败
-        for(Iterator<SysResource> iter = list.iterator(); iter.hasNext();){
-            SysResource element = iter.next();
+        for(Iterator<Sysresource> iter = list.iterator(); iter.hasNext();){
+            Sysresource element = iter.next();
             if(set.add(element)){ //返回true添加到newList //返回false不会添加newList
                 newList.add(element);
             }

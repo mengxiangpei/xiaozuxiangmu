@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.jk.dao.SysresourceMapper" >
-  <resultMap id="BaseResultMap" type="com.jk.pojo.SysResource" >
+  <resultMap id="BaseResultMap" type="com.jk.pojo.Sysresource" >
     <id column="ID" property="id" jdbcType="VARCHAR" />
     <result column="CREATEDATETIME" property="createdatetime" jdbcType="TIMESTAMP" />
     <result column="DESCRIPTION" property="description" jdbcType="VARCHAR" />
@@ -11,8 +11,8 @@
     <result column="UPDATEDATETIME" property="updatedatetime" jdbcType="TIMESTAMP" />
     <result column="URL" property="url" jdbcType="VARCHAR" />
     <result column="pid" property="pid" jdbcType="VARCHAR" />
-    <result column="resourcetypeId" property="resourcetypeid" jdbcType="VARCHAR" />
-    <result column="leafNode" property="leafnode" jdbcType="INTEGER" />
+    <result column="resourcetypeId" property="resourcetypeId" jdbcType="VARCHAR" />
+    <result column="leafNode" property="leafNode" jdbcType="INTEGER" />
   </resultMap>
   <!-- 字段 -->
   <sql id="search_sql">
@@ -37,16 +37,16 @@
     join t_sysrole_sysresource_info t3
     on t2.sysrole_id = t3.sysrole_id
     join t_sysresource_info t4
-    on t3.sysresource_id = t4.id
-    where t1.sysuser_id =#{userId,jdbcType=DECIMAL}
+ on t3.sysresource_id = t4.id
+    where t1.sysuser_id =#{sysuserId,jdbcType=DECIMAL}
     and t4.resourcetypeId =0
+<!--  and t4.resourcetypeId =#{resourceTypeId,jdbcType=DECIMAL}-->
 
   </select>
 
 
 
 
-=======
   <!-- 查询菜单url资源 tree -->
   <select id="selectResourceTree" resultMap="BaseResultMap"  >
     select  <include refid="Base_Column_List"/>
@@ -59,7 +59,6 @@
   </select>
 
 
->>>>>>> db0e8d3b1823e3a6e9a39745ad16cad78118b1a7
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
     <include refid="Base_Column_List" />
@@ -71,7 +70,7 @@
     delete from t_sysresource_info
     where ID = #{id,jdbcType=VARCHAR}
   </delete>
-  <insert id="insert" parameterType="com.jk.pojo.SysResource" >
+  <insert id="insert" parameterType="com.jk.pojo.Sysresource" >
     insert into t_sysresource_info (ID, CREATEDATETIME, DESCRIPTION, 
       ICONCLS, NAME, SEQ, 
       UPDATEDATETIME, URL, pid, 
@@ -81,7 +80,7 @@
       #{updatedatetime,jdbcType=TIMESTAMP}, #{url,jdbcType=VARCHAR}, #{pid,jdbcType=VARCHAR}, 
       #{resourcetypeid,jdbcType=VARCHAR}, #{leafnode,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="com.jk.pojo.SysResource" >
+  <insert id="insertSelective" parameterType="com.jk.pojo.Sysresource" >
     insert into t_sysresource_info
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -154,7 +153,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.jk.pojo.SysResource" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.jk.pojo.Sysresource" >
     update t_sysresource_info
     <set >
       <if test="createdatetime != null" >
@@ -190,7 +189,7 @@
     </set>
     where ID = #{id,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.jk.pojo.SysResource" >
+  <update id="updateByPrimaryKey" parameterType="com.jk.pojo.Sysresource" >
     update t_sysresource_info
     set CREATEDATETIME = #{createdatetime,jdbcType=TIMESTAMP},
       DESCRIPTION = #{description,jdbcType=VARCHAR},

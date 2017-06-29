@@ -68,7 +68,7 @@ public class SysResourceController {
                 yiji = new Tree();
                 yiji.setId(resourceList.get(i).getId());
                 yiji.setText(resourceList.get(i).getName());
-                yiji.setIconCls(resourceList.get(i).getIconcls());
+                yiji.setIconCls(resourceList.get(i).getIconCls());
                 yiji.setState("open");
                 childList = new ArrayList<Tree>();
                 //循环遍历子节点
@@ -81,7 +81,7 @@ public class SysResourceController {
                         //节点属性赋值
                         child.setId(resourceList.get(j).getId());
                         child.setText(resourceList.get(j).getName());
-                        child.setIconCls(resourceList.get(j).getIconcls());
+                        child.setIconCls(resourceList.get(j).getIconCls());
                         child.setPid(resourceList.get(j).getPid());
 
                         child.setState("open");
@@ -117,7 +117,7 @@ public class SysResourceController {
                 //节点属性赋值
                 child.setId(resourceList.get(j).getId());
                 child.setText(resourceList.get(j).getName());
-                child.setIconCls(resourceList.get(j).getIconcls());
+                child.setIconCls(resourceList.get(j).getIconCls());
                 child.setPid(resourceList.get(j).getPid());
 
 

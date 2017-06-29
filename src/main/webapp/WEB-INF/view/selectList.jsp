@@ -1,11 +1,5 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: ASUS
-  Date: 2017/6/27
-  Time: 19:45
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8"%>
 <%@ include file="/common/include.jsp" %>
 <html>
 <head>
@@ -24,13 +18,7 @@
     <a href="javascript:addUser()" class="easyui-linkbutton" data-options="iconCls:'icon-edit',plain:true">新增</a>
 </div>
 
-<%--<!-- 查看角色 dialog -->--%>
-<%--<div id="showRoleDialog">--%>
-<%--<fieldset>--%>
-<%--<legend>角色授权</legend>--%>
-<%--<ul id="roleTree"></ul>--%>
-<%--</fieldset>--%>
-<%--</div>--%>
+
 <script type="text/javascript">
 
     //新增
@@ -59,10 +47,10 @@
                         success:function(data){
                             //提示添加产品成功/失败
                             if (data.success) {
-                                alert('消息',data.msg,'info');
+                                alert('成功',data.msg,'info');
                             }
                             //添加成功 1.dataGrid刷新
-                            $("#userID").datagrid('reload');
+                            $("#userDataGrid").datagrid('reload');
                             //dialog关闭
                             $('#addUsers').dialog('close');
                         },
@@ -108,7 +96,6 @@
             ]
         });
     });
-
 
 </script>
 </body>

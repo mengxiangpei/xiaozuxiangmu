@@ -67,8 +67,6 @@ public class LoginController {
 		
 		//获取session中的验证码
 				String code = (String) request.getSession().getAttribute("imageCode");
-
-
 				if (null !=flag && 1 !=flag) {
 					//校验验证码是否正确
 					if (null != user && !"".equals(user.getImgcode().trim()) && !"".equals(code)) {

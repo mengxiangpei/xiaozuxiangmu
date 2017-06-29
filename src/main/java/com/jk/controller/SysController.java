@@ -1,29 +1,23 @@
 package com.jk.controller;
 
-<<<<<<< HEAD
 import com.jk.pojo.SessionInfo;
 import com.jk.pojo.Tree;
 import com.jk.pojo.UserInfo;
 import com.jk.service.SyResourceService;
 import com.jk.service.SysService;
 import com.jk.util.ConfigUtil;
-=======
 import com.jk.pojo.SysUserInfo;
-import com.jk.pojo.UserInfo;
-import com.jk.service.SysService;
->>>>>>> db0e8d3b1823e3a6e9a39745ad16cad78118b1a7
 import com.jk.util.ReturnJson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-<<<<<<< HEAD
-=======
+
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
->>>>>>> db0e8d3b1823e3a6e9a39745ad16cad78118b1a7
+
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
@@ -53,13 +47,15 @@ public class SysController {
     @ResponseBody
     public List<Tree> selectMainMenu(HttpServletRequest request) {
 
-      //  SessionInfo sessionInfo = (SessionInfo) request.getSession().getAttribute(ConfigUtil.getSessionInfoName());
+    SessionInfo sessionInfo = (SessionInfo) request.getSession().getAttribute(ConfigUtil.getSessionInfoName());
 
-       // String userId = sessionInfo.getUser().getId();
-        String userId ="1b73981e-14b0-4398-beb2-c814930416f8";
+     String userId = sessionInfo.getUser().getSysuserId();
+
+     //String userId ="1b73981e-14b0-4398-beb2-c814930416f8";
         List<Tree> treeList = syResourceService.selectMainMenu(userId);
         return treeList;
     }
+
     //新增方法
     @RequestMapping(value = "seaveUserInfo",method=RequestMethod.POST)
     @ResponseBody
@@ -95,14 +91,7 @@ public class SysController {
         return userPage;
     }
 
-
-
-
-
    //页面跳转
-
-
-
 
     //注册
     @RequestMapping(value="registerSysUser",method=RequestMethod.POST)

@@ -9,7 +9,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 
 
-public class SysResource implements java.io.Serializable {
+public class Sysresource implements java.io.Serializable {
 
 	/**
 	 * 
@@ -54,7 +54,7 @@ public class SysResource implements java.io.Serializable {
 				'}';
 	}
 
-	private List<SysResource> children;
+	private List<Sysresource> children;
 	//业务字段---节点状态 closed open
 	/*private String state="open";*/
 	private String state="closed";
@@ -194,7 +194,7 @@ public class SysResource implements java.io.Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		SysResource other = (SysResource) obj;
+		Sysresource other = (Sysresource) obj;
 		if (createdatetime == null) {
 			if (other.createdatetime != null)
 				return false;
@@ -248,11 +248,11 @@ public class SysResource implements java.io.Serializable {
 		return true;
 	}
 
-	public List<SysResource> getChildren() {
+	public List<Sysresource> getChildren() {
 		return children;
 	}
 
-	public void setChildren(List<SysResource> children) {
+	public void setChildren(List<Sysresource> children) {
 		this.children = children;
 	}
 
