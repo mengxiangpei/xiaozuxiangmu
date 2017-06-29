@@ -1,31 +1,31 @@
 package com.jk.service;
 
-import com.jk.dao.SysRoleResourceMapper;
-import com.jk.dao.UserInfoMapper;
-import com.jk.pojo.SysRoleResourceKey;
+import com.jk.dao.SysUserInfoMapper;
+import com.jk.pojo.SysUserInfo;
+import com.jk.util.MD5Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-/**
- * Created by ASUS on 2017/6/27.
- */
+import java.util.Date;
+import java.util.UUID;
+
 @Service
 public class SysServiceImpl implements SysService {
+	@Autowired
+	private SysUserInfoMapper sysUserInfoMapper;
 
-    @Autowired
-    private UserInfoMapper grantResourceOfRole;
-
-
-    @Autowired
-    private SysRoleResourceMapper sysRoleResourceMapper;
-
-    @Override
-    public void grantResourceOfRole(SysRoleResourceKey sysRoleResourceKey) {
-        sysRoleResourceMapper.grantResourceOfRole(sysRoleResourceKey);
-    }
-
-    @Override
-    public SysRoleResourceKey toUpdateSys(String sysId) {
-        return sysRoleResourceMapper.toUpdateSys(sysId);
-    }
+	public void saveSysUser(SysUserInfo user) {
+		//随机数id
+		user.setSysuserId(UUID.randomUUID().toString() );
+//		密码加密
+		user.setSysuserPwd(MD5Util.md5(user.getSysuserPwd()));
+		//创建时间
+		user.setSysuserCreatedatetime(new Date());
+		//修改时间
+		user.setSysuserUpdatedatetime(new Date());
+		sysUserInfoMapper.saveSysUser(user);
+	}
+	public SysUserInfo checkSysUser(SysUserInfo user) {
+		return sysUserInfoMapper.checkSysUser(user);
+	}
 }

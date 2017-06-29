@@ -21,6 +21,30 @@ public class SysUserInfo {
 
     private Date sysuserCreatedatetime;
 
+    // 此属性是业务字段不存数据库，虚拟属性
+    private String ip;
+
+    //验证码
+    private String imgcode;
+
+
+
+    public String getIp() {
+        return ip;
+    }
+
+    public void setIp(String ip) {
+        this.ip = ip;
+    }
+
+    public String getImgcode() {
+        return imgcode;
+    }
+
+    public void setImgcode(String imgcode) {
+        this.imgcode = imgcode;
+    }
+
     public String getSysuserId() {
         return sysuserId;
     }

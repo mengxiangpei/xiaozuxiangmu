@@ -16,6 +16,31 @@
     sysuser_id, sysuser_name, sysuser_loginname, sysuser_pwd, sysuser_sex, sysuser_age, 
     sysuser_photo, sysuser_updatedatetime, sysuser_createdatetime
   </sql>
+
+
+  <!-- 检验注册用户名是否已被注册 -->
+  <select id="checkSysUser" resultMap="BaseResultMap" parameterType="com.jk.pojo.SysUserInfo">
+    select  <include refid="Base_Column_List"/>
+    from t_sysuser_info
+    WHERE sysuser_loginname =  #{sysuserLoginname,jdbcType=VARCHAR}
+  </select>
+
+
+
+
+
+  <!-- 根据loginName查询user用户 -->
+  <select id="checkSysUserInfo" resultMap="BaseResultMap" parameterType="com.jk.pojo.SysUserInfo">
+    select  <include refid="Base_Column_List"/>
+    from t_sysuser_info
+    where sysuser_loginname = #{sysuserLoginname,jdbcType=VARCHAR}
+
+  </select>
+
+
+
+
+
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
     <include refid="Base_Column_List" />
@@ -26,7 +51,7 @@
     delete from t_sysuser_info
     where sysuser_id = #{sysuserId,jdbcType=VARCHAR}
   </delete>
-  <insert id="insert" parameterType="com.jk.pojo.SysUserInfo" >
+  <insert id="saveSysUser" parameterType="com.jk.pojo.SysUserInfo" >
     insert into t_sysuser_info (sysuser_id, sysuser_name, sysuser_loginname, 
       sysuser_pwd, sysuser_sex, sysuser_age, 
       sysuser_photo, sysuser_updatedatetime, sysuser_createdatetime

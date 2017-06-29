@@ -54,4 +54,27 @@
 		</property>
 	</bean>
 
+	<!-- 可以配置多个自定义拦截器  -->
+	<!--<mvc:interceptors>-->
+	<!-- 登录拦截器 -->
+	<!--<mvc:interceptor>-->
+		<!--<mvc:mapping path="/**" />-->
+		<!--<bean class="com.jk.Interceptor.LoginInterceptor">-->
+			<!-- 登录拦截器不拦截的url请求 -->
+			<!--<property name="excludeUrls">-->
+				<!--<list>-->
+					<!--<value>/user/checkSysUserLogin.do</value>&lt;!&ndash; 用户登录&ndash;&gt;-->
+					<!--<value>/sys/registerSysUser.do</value>&lt;!&ndash; 用户注册  &ndash;&gt;-->
+					<!--<value>/user/checkSysUser.do</value>&lt;!&ndash; 用户注册时是否重名  &ndash;&gt;-->
+					<!--&lt;!&ndash;<value>/ziyuan/toZiyuanList.action</value>&ndash;&gt;-->
+				<!--</list>-->
+			<!--</property>-->
+		<!--</bean>-->
+	<!--</mvc:interceptor>-->
+	<!--</mvc:interceptors>-->
+
+
+
+
+
 </beans>

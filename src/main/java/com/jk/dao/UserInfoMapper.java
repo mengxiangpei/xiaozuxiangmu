@@ -1,6 +1,6 @@
 package com.jk.dao;
 
-import com.jk.pojo.SysRoleResourceKey;
+import com.jk.pojo.SysUserInfo;
 import com.jk.pojo.UserInfo;
 
 public interface UserInfoMapper {

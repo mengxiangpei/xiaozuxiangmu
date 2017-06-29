@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ include file="/common/include.jsp"%>
     
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -28,11 +27,11 @@
 			<table class="table">
 				<tr>
 					<th width="50">登录名</th>
-					<td><input name="loginname" readonly="readonly" type="" value="${sessionInfo.user.loginname }" /></td>
+					<td><input name="sysuserLoginname" readonly="readonly" type="" value="${sessionInfo.user.sysuserLoginname }" /></td>
 				</tr>
 				<tr>
 					<th>密码</th>
-					<td><input name="pwd" type="password" class="easyui-validatebox" data-options="required:true" /></td>
+					<td><input name="sysuserPwd" type="password" class="easyui-validatebox" data-options="required:true" /></td>
 				</tr>
 			</table>
 		</form>

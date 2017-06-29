@@ -7,7 +7,7 @@
   </resultMap>
 
   <!--批量新增   角色权限资源信息  -->
-  <insert id="insertRoleResourceList" parameterType="java.util.List">
+  <insert id="insertRoleResourceList" useGeneratedKeys="true"  parameterType="java.util.List">
     insert into t_sysrole_sysresource_info  (sysrole_id,sysresource_id)
     VALUES
     <foreach collection="list" item="u" index="index" separator =",">

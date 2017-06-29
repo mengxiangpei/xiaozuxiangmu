@@ -1,14 +1,10 @@
 package com.jk.service;
 
-import com.jk.pojo.SysRoleResourceKey;
+import com.jk.pojo.SysUserInfo;
 
-/**
- * Created by ASUS on 2017/6/27.
- */
 public interface SysService {
 
+	void saveSysUser(SysUserInfo user);
 
-    SysRoleResourceKey toUpdateSys(String sysId);
-
-    void grantResourceOfRole(SysRoleResourceKey sysRoleResourceKey);
+	SysUserInfo checkSysUser(SysUserInfo user);
 }
