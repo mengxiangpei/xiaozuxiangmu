@@ -13,6 +13,23 @@
   <sql id="Base_Column_List" >
     ID, CREATEDATETIME, DESCRIPTION, ICONCLS, NAME, SEQ, UPDATEDATETIME
   </sql>
+
+
+
+
+  <!--返回的结果集-->
+  <resultMap id="BaseResultMapList" type="com.jk.pojo.SysRoleInfo" >
+    <id column="ID" property="id" jdbcType="VARCHAR" />
+    <result column="DESCRIPTION" property="description" jdbcType="VARCHAR" />
+    <result column="NAME" property="name" jdbcType="VARCHAR" />
+  </resultMap>
+
+  <!--查询角色id,角色名称  -->
+  <select id="selectRoleList" resultMap="BaseResultMapList" parameterType="com.jk.pojo.SysRoleInfo">
+    select id,name,description from
+    t_sysrole_info
+  </select>
+
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
     <include refid="Base_Column_List" />

@@ -2,6 +2,8 @@ package com.jk.dao;
 
 import com.jk.pojo.Sysresource;
 
+import java.util.List;
+
 public interface SysresourceMapper {
     int deleteByPrimaryKey(String id);
 
@@ -14,4 +16,7 @@ public interface SysresourceMapper {
     int updateByPrimaryKeySelective(Sysresource record);
 
     int updateByPrimaryKey(Sysresource record);
+
+
+    List<Sysresource> selectResourceTree();
 }

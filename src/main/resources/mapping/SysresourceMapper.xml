@@ -18,6 +18,20 @@
     ID, CREATEDATETIME, DESCRIPTION, ICONCLS, NAME, SEQ, UPDATEDATETIME, URL, pid, resourcetypeId, 
     leafNode
   </sql>
+
+
+  <!-- 查询菜单url资源 tree -->
+  <select id="selectResourceTree" resultMap="BaseResultMap"  >
+    select  <include refid="Base_Column_List"/>
+    from t_sysresource_info
+    <trim prefix="where" prefixOverrides="and">
+      <if test="resourcetypeId!=null and resourcetypeId!=''">
+        resourcetypeId = #resourcetypeId#;
+      </if>
+    </trim>
+  </select>
+
+
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
     <include refid="Base_Column_List" />

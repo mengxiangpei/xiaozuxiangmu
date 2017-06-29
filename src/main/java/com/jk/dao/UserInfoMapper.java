@@ -1,5 +1,6 @@
 package com.jk.dao;
 
+import com.jk.pojo.SysUserInfo;
 import com.jk.pojo.UserInfo;
 
 import java.util.List;
@@ -18,5 +19,6 @@ public interface UserInfoMapper {
     int updateByPrimaryKey(UserInfo record);
     //角色查询
     List selectUserList();
+
 
 }

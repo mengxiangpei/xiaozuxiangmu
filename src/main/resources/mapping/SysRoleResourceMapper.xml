@@ -5,6 +5,14 @@
     <id column="sysresource_id" property="sysresourceId" jdbcType="VARCHAR" />
     <id column="sysrole_id" property="sysroleId" jdbcType="VARCHAR" />
   </resultMap>
+
+
+  <!-- 根据角色id 查询角色资源权限信息 -->
+  <select id="getResourceByRoleId" resultMap="BaseResultMap" parameterType="com.jk.pojo.SysRoleResourceKey">
+    select sysresource_id,sysrole_id
+    from t_sysrole_sysresource_info 	where
+    sysrole_id = #{id,jdbcType=VARCHAR}
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="com.jk.pojo.SysRoleResourceKey" >
     delete from t_sysrole_sysresource_info
     where sysresource_id = #{sysresourceId,jdbcType=VARCHAR}
