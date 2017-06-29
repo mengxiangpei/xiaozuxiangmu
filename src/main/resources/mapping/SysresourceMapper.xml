@@ -5,19 +5,46 @@
     <id column="ID" property="id" jdbcType="VARCHAR" />
     <result column="CREATEDATETIME" property="createdatetime" jdbcType="TIMESTAMP" />
     <result column="DESCRIPTION" property="description" jdbcType="VARCHAR" />
-    <result column="ICONCLS" property="iconcls" jdbcType="VARCHAR" />
+    <result column="ICONCLS" property="iconCls" jdbcType="VARCHAR" />
     <result column="NAME" property="name" jdbcType="VARCHAR" />
     <result column="SEQ" property="seq" jdbcType="INTEGER" />
     <result column="UPDATEDATETIME" property="updatedatetime" jdbcType="TIMESTAMP" />
     <result column="URL" property="url" jdbcType="VARCHAR" />
     <result column="pid" property="pid" jdbcType="VARCHAR" />
-    <result column="resourcetypeId" property="resourcetypeid" jdbcType="VARCHAR" />
-    <result column="leafNode" property="leafnode" jdbcType="INTEGER" />
+    <result column="resourcetypeId" property="resourcetypeId" jdbcType="VARCHAR" />
+    <result column="leafNode" property="leafNode" jdbcType="INTEGER" />
   </resultMap>
+  <!-- 字段 -->
+  <sql id="search_sql">
+    t4.id,t4.name,t4.url,t4.iconCls,t4.seq,t4.pid
+  </sql>
+
   <sql id="Base_Column_List" >
     ID, CREATEDATETIME, DESCRIPTION, ICONCLS, NAME, SEQ, UPDATEDATETIME, URL, pid, resourcetypeId, 
     leafNode
   </sql>
+
+
+
+  <!-- 根据用户id查询拥有的 左侧菜单 tree  resourcetypeId为0 -->
+  <select id="selectMainMenu" resultMap="BaseResultMap"  parameterType="java.lang.String">
+
+    select <include refid="search_sql"/>
+    from
+    t_sysuser_info t1
+    join t_sysuser_sysrole_info t2
+    on t1.sysuser_id = t2.sysuser_id
+    join t_sysrole_sysresource_info t3
+    on t2.sysrole_id = t3.sysrole_id
+    join t_sysresource_info t4
+ on t3.sysresource_id = t4.id
+    where t1.sysuser_id =#{sysuserId,jdbcType=DECIMAL}
+    and t4.resourcetypeId =0
+<!--  and t4.resourcetypeId =#{resourceTypeId,jdbcType=DECIMAL}-->
+
+  </select>
+
+
 
 
   <!-- 查询菜单url资源 tree -->
@@ -38,6 +65,7 @@
     from t_sysresource_info
     where ID = #{id,jdbcType=VARCHAR}
   </select>
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
     delete from t_sysresource_info
     where ID = #{id,jdbcType=VARCHAR}

@@ -12,20 +12,21 @@ public class SessionInfo implements java.io.Serializable {
 	 */
 	private static final long serialVersionUID = -7145049418287239762L;
 	
+
 	private SysUserInfo user;
 
 	public SysUserInfo getUser() {
+
 		return user;
 	}
-
 	public void setUser(SysUserInfo user) {
 		this.user = user;
 	}
-
 
 	@Override
 	public String toString() {
 		return user.getSysuserLoginname();
 	}
+
 
 }

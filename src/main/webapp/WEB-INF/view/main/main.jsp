@@ -1,4 +1,5 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+		 pageEncoding="UTF-8"%>
 <%@ include file="/common/include.jsp"%>
     
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -165,7 +166,7 @@
 		*/
 		mainMenu = $('#mainMenu').tree({
 			//请求后台url
-			url:'<%=request.getContextPath()%>/resource/selectMainMenu.do',
+			url:'<%=request.getContextPath()%>/sys/selectMainMenu.do',
 			//访问方式默认post
 			//method:'post',
 			//显示复选框

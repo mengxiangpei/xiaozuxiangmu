@@ -17,6 +17,10 @@ public interface SysresourceMapper {
 
     int updateByPrimaryKey(Sysresource record);
 
+    ///左侧的树
+    List<Sysresource> selectMainMenu(String userId);
+
+
 
     List<Sysresource> selectResourceTree();
 }

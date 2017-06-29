@@ -1,26 +1,18 @@
 package com.jk.controller;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
-
 import com.jk.pojo.SessionInfo;
 import com.jk.pojo.SysUserInfo;
-import com.jk.service.SysService;
 import com.jk.service.SysUserInfoService;
+import com.jk.util.ConfigUtil;
+import com.jk.util.MD5Util;
+import com.jk.util.ReturnJson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.jk.util.ConfigUtil;
-import com.jk.util.MD5Util;
-import com.jk.util.PageUtil;
-import com.jk.util.ReturnJson;
+import javax.servlet.http.HttpServletRequest;
 
 @Controller
 @RequestMapping("user")
@@ -75,8 +67,6 @@ public class LoginController {
 		
 		//获取session中的验证码
 				String code = (String) request.getSession().getAttribute("imageCode");
-
-
 				if (null !=flag && 1 !=flag) {
 					//校验验证码是否正确
 					if (null != user && !"".equals(user.getImgcode().trim()) && !"".equals(code)) {
@@ -102,6 +92,7 @@ public class LoginController {
 				SessionInfo sessionInfo = new SessionInfo();
 				//用户密码置 空
 				u.setSysuserPwd(null);
+			//	sessionInfo.setUser(u);
 				sessionInfo.setUser(u);
 				request.getSession().setAttribute(ConfigUtil.getSessionInfoName(),sessionInfo);
 			} else {

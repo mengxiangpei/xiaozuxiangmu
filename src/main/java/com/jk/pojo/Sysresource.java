@@ -1,115 +1,267 @@
 package com.jk.pojo;
 
+
 import java.util.Date;
+import java.util.List;
+import java.util.UUID;
 
-public class Sysresource {
-    private String id;
+import org.springframework.format.annotation.DateTimeFormat;
 
-    private Date createdatetime;
 
-    private String description;
 
-    private String iconcls;
+public class Sysresource implements java.io.Serializable {
 
-    private String name;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8783421438612966130L;
 
-    private Integer seq;
+	
 
-    private Date updatedatetime;
+	private String id;
+	@DateTimeFormat(pattern="yyyy-MM-dd")
+	private Date createdatetime;
+	@DateTimeFormat(pattern="yyyy-MM-dd")
+	private Date updatedatetime;
+	private String name;
+	private String url;
+	private String description;
+	private String iconCls;
+	private Integer seq;
+	private String resourcetypeId;
+	private String pid;// 虚拟属性，用于获得当前资源的父资源ID
 
-    private String url;
+	public static long getSerialVersionUID() {
+		return serialVersionUID;
+	}
 
-    private String pid;
+	@Override
+	public String toString() {
+		return "SysResource{" +
+				"id='" + id + '\'' +
+				", createdatetime=" + createdatetime +
+				", updatedatetime=" + updatedatetime +
+				", name='" + name + '\'' +
+				", url='" + url + '\'' +
+				", description='" + description + '\'' +
+				", iconCls='" + iconCls + '\'' +
+				", seq=" + seq +
+				", resourcetypeId='" + resourcetypeId + '\'' +
+				", pid='" + pid + '\'' +
+				", children=" + children +
+				", state='" + state + '\'' +
+				", leafNode=" + leafNode +
+				'}';
+	}
 
-    private String resourcetypeid;
+	private List<Sysresource> children;
+	//业务字段---节点状态 closed open
+	/*private String state="open";*/
+	private String state="closed";
+	
+	
+	//是否是叶子节点
+	private int leafNode=0;
+	
+	public int getLeafNode() {
+		return leafNode;
+	}
 
-    private Integer leafnode;
+	public void setLeafNode(int leafNode) {
+		this.leafNode = leafNode;
+		if (this.leafNode == 1) {
+			this.state="open";
+		}
+	}
+	
+	
+	public String getResourcetypeId() {
+		return resourcetypeId;
+	}
 
-    public String getId() {
-        return id;
-    }
+	public void setResourcetypeId(String resourcetypeId) {
+		this.resourcetypeId = resourcetypeId;
+	}
 
-    public void setId(String id) {
-        this.id = id == null ? null : id.trim();
-    }
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
 
-    public Date getCreatedatetime() {
-        return createdatetime;
-    }
+	public String getId() {
+		if (this.id != null) {
+			return this.id;
+		}
+		return UUID.randomUUID().toString();
+	}
 
-    public void setCreatedatetime(Date createdatetime) {
-        this.createdatetime = createdatetime;
-    }
+	public void setId(String id) {
+		this.id = id;
+	}
 
-    public String getDescription() {
-        return description;
-    }
 
-    public void setDescription(String description) {
-        this.description = description == null ? null : description.trim();
-    }
 
-    public String getIconcls() {
-        return iconcls;
-    }
+	public Date getUpdatedatetime() {
+		if (this.updatedatetime != null)
+			return this.updatedatetime;
+		return new Date();
+	}
 
-    public void setIconcls(String iconcls) {
-        this.iconcls = iconcls == null ? null : iconcls.trim();
-    }
+	public void setUpdatedatetime(Date updatedatetime) {
+		this.updatedatetime = updatedatetime;
+	}
 
-    public String getName() {
-        return name;
-    }
+	public Date getCreatedatetime() {
+		if (this.createdatetime != null)
+			return this.createdatetime;
+		return new Date();
+	}
 
-    public void setName(String name) {
-        this.name = name == null ? null : name.trim();
-    }
+	public void setCreatedatetime(Date createdatetime) {
+		this.createdatetime = createdatetime;
+	}
 
-    public Integer getSeq() {
-        return seq;
-    }
+	public String getName() {
+		return this.name;
+	}
 
-    public void setSeq(Integer seq) {
-        this.seq = seq;
-    }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-    public Date getUpdatedatetime() {
-        return updatedatetime;
-    }
+	public String getUrl() {
+		return this.url;
+	}
 
-    public void setUpdatedatetime(Date updatedatetime) {
-        this.updatedatetime = updatedatetime;
-    }
+	public void setUrl(String url) {
+		this.url = url;
+	}
 
-    public String getUrl() {
-        return url;
-    }
+	public String getDescription() {
+		return this.description;
+	}
 
-    public void setUrl(String url) {
-        this.url = url == null ? null : url.trim();
-    }
+	public void setDescription(String description) {
+		this.description = description;
+	}
 
-    public String getPid() {
-        return pid;
-    }
+	public String getIconCls() {
+		return this.iconCls;
+	}
 
-    public void setPid(String pid) {
-        this.pid = pid == null ? null : pid.trim();
-    }
+	public void setIconCls(String iconCls) {
+		this.iconCls = iconCls;
+	}
 
-    public String getResourcetypeid() {
-        return resourcetypeid;
-    }
+	public Integer getSeq() {
+		return this.seq;
+	}
 
-    public void setResourcetypeid(String resourcetypeid) {
-        this.resourcetypeid = resourcetypeid == null ? null : resourcetypeid.trim();
-    }
+	public void setSeq(Integer seq) {
+		this.seq = seq;
+	}
 
-    public Integer getLeafnode() {
-        return leafnode;
-    }
 
-    public void setLeafnode(Integer leafnode) {
-        this.leafnode = leafnode;
-    }
+	public String getPid() {
+		return pid;
+	}
+
+	public void setPid(String pid) {
+		this.pid = pid;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((createdatetime == null) ? 0 : createdatetime.hashCode());
+		result = prime * result + ((description == null) ? 0 : description.hashCode());
+		result = prime * result + ((iconCls == null) ? 0 : iconCls.hashCode());
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		result = prime * result + ((pid == null) ? 0 : pid.hashCode());
+		result = prime * result + ((resourcetypeId == null) ? 0 : resourcetypeId.hashCode());
+		result = prime * result + ((seq == null) ? 0 : seq.hashCode());
+		result = prime * result + ((updatedatetime == null) ? 0 : updatedatetime.hashCode());
+		result = prime * result + ((url == null) ? 0 : url.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Sysresource other = (Sysresource) obj;
+		if (createdatetime == null) {
+			if (other.createdatetime != null)
+				return false;
+		} else if (!createdatetime.equals(other.createdatetime))
+			return false;
+		if (description == null) {
+			if (other.description != null)
+				return false;
+		} else if (!description.equals(other.description))
+			return false;
+		if (iconCls == null) {
+			if (other.iconCls != null)
+				return false;
+		} else if (!iconCls.equals(other.iconCls))
+			return false;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		if (name == null) {
+			if (other.name != null)
+				return false;
+		} else if (!name.equals(other.name))
+			return false;
+		if (pid == null) {
+			if (other.pid != null)
+				return false;
+		} else if (!pid.equals(other.pid))
+			return false;
+		if (resourcetypeId == null) {
+			if (other.resourcetypeId != null)
+				return false;
+		} else if (!resourcetypeId.equals(other.resourcetypeId))
+			return false;
+		if (seq == null) {
+			if (other.seq != null)
+				return false;
+		} else if (!seq.equals(other.seq))
+			return false;
+		if (updatedatetime == null) {
+			if (other.updatedatetime != null)
+				return false;
+		} else if (!updatedatetime.equals(other.updatedatetime))
+			return false;
+		if (url == null) {
+			if (other.url != null)
+				return false;
+		} else if (!url.equals(other.url))
+			return false;
+		return true;
+	}
+
+	public List<Sysresource> getChildren() {
+		return children;
+	}
+
+	public void setChildren(List<Sysresource> children) {
+		this.children = children;
+	}
+
+	public String getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
+	}
+
 }

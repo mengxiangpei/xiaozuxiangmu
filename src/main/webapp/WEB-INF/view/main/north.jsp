@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <div id="sessionInfoDiv" style="position: absolute; right: 10px; top: 5px;">
 	欢迎<font color='red' size='5'>${sessionInfo.user.loginname }</font>登录！！！
