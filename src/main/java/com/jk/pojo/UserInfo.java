@@ -62,4 +62,17 @@ public class UserInfo {
     public void setUserTime(Date userTime) {
         this.userTime = userTime;
     }
+
+    @Override
+    public String toString() {
+        return "UserInfo{" +
+                "userId=" + userId +
+                ", userName='" + userName + '\'' +
+                ", userPwd='" + userPwd + '\'' +
+                ", userTel='" + userTel + '\'' +
+                ", userEmail='" + userEmail + '\'' +
+                ", userTime=" + userTime +
+                '}';
+    }
+
 }

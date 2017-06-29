@@ -166,7 +166,7 @@
 		*/
 		mainMenu = $('#mainMenu').tree({
 			//请求后台url
-			url:'<%=request.getContextPath()%>/resource/selectMainMenu.do',
+			url:'<%=request.getContextPath()%>/sys/selectMainMenu.do',
 			//访问方式默认post
 			//method:'post',
 			//显示复选框

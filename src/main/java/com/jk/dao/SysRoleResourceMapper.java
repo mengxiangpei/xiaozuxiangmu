@@ -1,6 +1,9 @@
 package com.jk.dao;
 
+import com.jk.pojo.SysResource;
 import com.jk.pojo.SysRoleResourceKey;
+
+import java.util.List;
 
 public interface SysRoleResourceMapper {
     int deleteByPrimaryKey(SysRoleResourceKey key);
@@ -8,4 +11,5 @@ public interface SysRoleResourceMapper {
     int insert(SysRoleResourceKey record);
 
     int insertSelective(SysRoleResourceKey record);
+
 }

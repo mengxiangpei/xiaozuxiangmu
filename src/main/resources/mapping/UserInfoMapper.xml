@@ -9,9 +9,11 @@
     <result column="user_email" property="userEmail" jdbcType="VARCHAR" />
     <result column="user_time" property="userTime" jdbcType="DATE" />
   </resultMap>
+
   <sql id="Base_Column_List" >
     user_id, user_name, user_pwd, user_tel, user_email, user_time
   </sql>
+
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
@@ -22,7 +24,8 @@
     delete from t_user_info
     where user_id = #{userId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.jk.pojo.UserInfo" >
+
+  <insert id="insertUserInfo" parameterType="com.jk.pojo.UserInfo" >
     insert into t_user_info (user_id, user_name, user_pwd, 
       user_tel, user_email, user_time
       )
@@ -30,6 +33,7 @@
       #{userTel,jdbcType=VARCHAR}, #{userEmail,jdbcType=VARCHAR}, #{userTime,jdbcType=DATE}
       )
   </insert>
+
   <insert id="insertSelective" parameterType="com.jk.pojo.UserInfo" >
     insert into t_user_info
     <trim prefix="(" suffix=")" suffixOverrides="," >
