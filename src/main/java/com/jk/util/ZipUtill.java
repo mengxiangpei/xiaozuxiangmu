@@ -165,7 +165,7 @@ public class ZipUtill {
 	
 
 	public static void main(String[] args) {
-		List<String> fileList = new ArrayList<>();
+		List<String> fileList = new ArrayList();
 		fileList.add("D://testZip//1.txt");
 		fileList.add("D://testZip//2.java");
 		fileList.add("D://testZip//3.png");
