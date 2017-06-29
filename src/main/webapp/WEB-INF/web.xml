@@ -82,7 +82,7 @@
 	<session-config>
 		<session-timeout>30</session-timeout>
 	</session-config>
-
+	
 
 	<!--  验证码 -->
 	<servlet>
@@ -94,6 +94,6 @@
 		<url-pattern>/imageCode</url-pattern>
 	</servlet-mapping>
 
-  
+
   
 </web-app>

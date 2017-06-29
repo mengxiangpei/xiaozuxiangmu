@@ -25,8 +25,7 @@ public class SessionInfo implements java.io.Serializable {
 
 	@Override
 	public String toString() {
-		return "SessionInfo{" +
-				"user=" + user +
-				'}';
+		return user.getSysuserLoginname();
 	}
+
 }
