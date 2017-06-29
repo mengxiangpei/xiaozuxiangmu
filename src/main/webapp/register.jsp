@@ -1,5 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ include file="/common/include.jsp"%>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -153,9 +153,7 @@ $(function(){
 //注册用户
 function registerSysUser(){
 	var flag=$('form').form('validate')
-    alert($('form').form('validate'))
 	if(flag){
-	    alert($("#registerForm").serialize())
 		$.ajax({
 			url:'<%=request.getContextPath()%>/sys/registerSysUser.do',
 			type:'post',
