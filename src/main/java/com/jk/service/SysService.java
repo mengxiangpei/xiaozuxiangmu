@@ -1,11 +1,10 @@
 package com.jk.service;
 
-/**
- * Created by ASUS on 2017/6/27.
- */
+import com.jk.pojo.SysUserInfo;
+
 public interface SysService {
 
+	void saveSysUser(SysUserInfo user);
 
-
-
+	SysUserInfo checkSysUser(SysUserInfo user);
 }

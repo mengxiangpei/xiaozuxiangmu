@@ -20,6 +20,16 @@ public class SysUserInfo {
     private Date sysuserUpdatedatetime;
 
     private Date sysuserCreatedatetime;
+    //验证码
+    private String imgcode;
+
+    public String getImgcode() {
+        return imgcode;
+    }
+
+    public void setImgcode(String imgcode) {
+        this.imgcode = imgcode;
+    }
 
     public String getSysuserId() {
         return sysuserId;
