@@ -82,7 +82,17 @@
 	<session-config>
 		<session-timeout>30</session-timeout>
 	</session-config>
-	
+
+
+	<!--  验证码 -->
+	<servlet>
+		<servlet-name>imageCode</servlet-name>
+		<servlet-class>com.jk.util.ImageCodeServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>imageCode</servlet-name>
+		<url-pattern>/imageCode</url-pattern>
+	</servlet-mapping>
 
   
   

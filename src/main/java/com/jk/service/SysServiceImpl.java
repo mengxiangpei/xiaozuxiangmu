@@ -1,6 +1,7 @@
 package com.jk.service;
 
 import com.jk.dao.UserInfoMapper;
+import com.jk.pojo.SysUserInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,5 +13,7 @@ public class SysServiceImpl implements SysService {
 
     @Autowired
     private UserInfoMapper userInfoMapper;
+
+
 
 }
