@@ -102,4 +102,6 @@ public class SysUserInfo {
     public void setSysuserCreatedatetime(Date sysuserCreatedatetime) {
         this.sysuserCreatedatetime = sysuserCreatedatetime;
     }
+
+
 }
