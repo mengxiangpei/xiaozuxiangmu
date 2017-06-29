@@ -20,12 +20,22 @@
 <!-- datagrid 工具条 -->
 <div id="tb">
     <a href="javascript:resourceDialog('showResourceDialog')" class="easyui-linkbutton" data-options="iconCls:'icon-edit',plain:true">查看权限</a>
+    <a href="javascript:resourceDialog('updateResourceDialog')" class="easyui-linkbutton" data-options="iconCls:'icon-help',plain:true">修改权限</a>
 </div>
 
 <!-- 查询资源dialog -->
 <div id="showResourceDialog" style="diaplay:none">
     <fieldset>
         <legend>查看角色授权</legend>
+        <ul name="resourceTree"></ul>
+    </fieldset>
+</div>
+
+
+<!-- 修改 资源   dialog -->
+<div id="updateResourceDialog" style="display:none">
+    <fieldset>
+        <legend>修改角色授权</legend>
         <ul name="resourceTree"></ul>
     </fieldset>
 </div>
@@ -71,6 +81,28 @@
                         initTree(dialogId,trObj.id);
                     }
                 })
+            }else{
+                $("#"+dialogId).dialog({
+                    title: '修改资源',
+                    width: 400,
+                    height: 400,
+                    closed: false,
+                    cache: false,
+                    buttons:[
+                        {
+                            text:'授予权限',
+                            iconCls:'icon-edit',
+                            handler:function(){
+                                //给当前角色授予权限/修改权限
+                                grandResource(dialogId,trObj.id);
+                            }
+                        }
+                    ],
+                    onBeforeOpen:function(){
+                        //初始化 资源tree插件
+                        initTree(dialogId,trObj.id);
+                    }
+                })
             }
         }
     }
@@ -108,6 +140,48 @@
         });
     }
 
+
+    //授予权限/修改权限
+    function grandResource(dialogId,roleId){
+
+
+        //获取后代元素 ul
+        var ul = $("#"+dialogId).find('ul');
+
+        var resourceIds="";
+        //获取 被选中复选框的 node节点id   以及   不确定的复选框的 node节点id【父级节点半选中状态】
+        var nodes = $(ul).tree('getChecked',['checked','indeterminate']);
+        $(nodes).each(function(){
+            resourceIds += this.id+",";
+        });
+        /* $.post(
+         sys.contextPath+'/resource/grantResourceOfRole.do',
+         {'sysRoleId':roleId,'sysResourceId':resourceIds},
+         function(data){
+         $.messager.alert('提示信息',data.msg,'info');
+         $("#"+dialogId).dialog('close');
+         },
+         'json'
+         ); */
+        $.ajax({
+            url:sys.contextPath+'/resource/grantResourceOfRole.do',
+            type:'POST',
+            data:{'sysroleId':roleId,'sysresourceId':resourceIds},
+            dataType:'json',
+            success:function(data){
+                $.messager.alert('提示信息',data.msg,'info');
+                $("#"+dialogId).dialog('close');
+            },
+            error:function(data){
+                if(data.responseText=='noAuthority'){
+                    //ajax请求没有访问权限时的处理
+                    parent.location.href=sys.contextPath+"/error/noAuthority.jsp";
+                    //   window.location.href=sys.contextPath+"/error/noAuthority.jsp";
+                }
+            }
+        })
+
+    }
 </script>
 </body>
 </html>

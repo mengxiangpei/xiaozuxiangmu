@@ -6,6 +6,24 @@
     <id column="sysrole_id" property="sysroleId" jdbcType="VARCHAR" />
   </resultMap>
 
+  <!--批量新增   角色权限资源信息  -->
+  <insert id="insertRoleResourceList" parameterType="java.util.List">
+    insert into t_sysrole_sysresource_info  (sysrole_id,sysresource_id)
+    VALUES
+    <foreach collection="list" item="u" index="index" separator =",">
+      (
+      #{u.sysroleId,jdbcType=VARCHAR}, #{u.sysresourceId,jdbcType=VARCHAR}
+      )
+    </foreach >
+  </insert>
+
+
+  <!-- 根据角色id删除 角色权限资源信息 -->
+  <delete id="deleteRoleResourceByRoleId" parameterType="java.lang.String" >
+    delete from t_sysrole_sysresource_info
+    where sysrole_id = #{sysroleId}
+  </delete>
+
 
   <!-- 根据角色id 查询角色资源权限信息 -->
   <select id="getResourceByRoleId" resultMap="BaseResultMap" parameterType="com.jk.pojo.SysRoleResourceKey">

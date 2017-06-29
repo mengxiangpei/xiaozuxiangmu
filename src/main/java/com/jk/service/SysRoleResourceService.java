@@ -10,4 +10,6 @@ import java.util.List;
  */
 public interface SysRoleResourceService {
     List<SysRoleResourceKey> getResourceByRoleId(SysRoleInfo role);
+
+    void updateResourceOfRole(SysRoleResourceKey roleResource);
 }

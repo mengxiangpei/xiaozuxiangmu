@@ -1,5 +1,6 @@
 package com.jk.dao;
 
+import com.jk.pojo.SysRoleResourceKey;
 import com.jk.pojo.UserInfo;
 
 public interface UserInfoMapper {
@@ -14,4 +15,5 @@ public interface UserInfoMapper {
     int updateByPrimaryKeySelective(UserInfo record);
 
     int updateByPrimaryKey(UserInfo record);
+
 }

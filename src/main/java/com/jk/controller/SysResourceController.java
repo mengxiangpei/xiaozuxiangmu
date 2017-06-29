@@ -7,6 +7,7 @@ import com.jk.pojo.Tree;
 import com.jk.service.SysResourceService;
 
 import com.jk.service.SysRoleResourceService;
+import com.jk.util.ReturnJson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,6 +30,23 @@ public class SysResourceController {
     private SysResourceService resourceService;
     @Autowired
     private SysRoleResourceService roleResourceService;
+
+
+    /**
+     *  授予权限/修改权限
+     *  1.根据角色id删除 角色权限信息
+     *  2.添加 重新授予的 角色权限信息
+     * @param roleResource
+     * @return
+     */
+    @RequestMapping(value="grantResourceOfRole",method=RequestMethod.POST)
+    @ResponseBody
+    public ReturnJson grantResourceOfRole(SysRoleResourceKey roleResource){
+
+        roleResourceService.updateResourceOfRole(roleResource);
+
+        return new ReturnJson(true, "授予权限成功", null);
+    }
 
 
 

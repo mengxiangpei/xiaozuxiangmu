@@ -13,4 +13,12 @@ public interface SysRoleResourceMapper {
     int insertSelective(SysRoleResourceKey record);
 
     List<SysRoleResourceKey> getResourceByRoleId(SysRoleInfo role);
+
+    void grantResourceOfRole(SysRoleResourceKey sysRoleResourceKey);
+
+    SysRoleResourceKey toUpdateSys(String sysId);
+
+    int deleteRoleResourceByRoleId(String sysroleId);
+
+    void insertRoleResourceList(List<SysRoleResourceKey> roleResourceKeysList);
 }
